@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KeyPlayers HQ — Virtual Assistant Handbook 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   KEYPLAYERS HQ — VA HANDBOOK 2026
+   Brand Colors: Black + Forest Green + Sage
+   ============================================ */
+
+:root {
+  /* Brand palette — extracted from PDF */
+  --brand-black: #000000;
+  --brand-dark: #0A0A0A;
+  --brand-deep-teal: #072928;
+  --brand-green: #29693c;
+  --brand-green-hover: #338a4d;
+  --brand-sage: #a4cb9d;
+  --brand-sage-light: #c5e0bf;
+  --brand-teal: #427a79;
+  --brand-glow: rgba(41, 105, 60, 0.12);
+
+  /* Neutrals */
+  --white: #FFFFFF;
+  --off-white: #F7F9F7;
+  --gray-50: #F0F4F0;
+  --gray-100: #E0E6E0;
+  --gray-200: #C5CEC5;
+  --gray-300: #94A398;
+  --gray-400: #687068;
+  --gray-500: #4A524A;
+  --gray-700: #2A302A;
+
+  /* Semantic */
+  --red: #DC2626;
+  --red-light: #FEE2E2;
+  --green-success: #16A34A;
+  --green-success-light: #DCFCE7;
+  --amber: #D97706;
+  --amber-light: #FEF3C7;
+
+  /* System */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 8px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.12), 0 4px 6px -4px rgba(0,0,0,0.06);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  color: var(--gray-700);
+  background: var(--off-white);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- HERO SECTION ---- */
+.hero {
+  background: var(--brand-black);
+  color: var(--white);
+  padding: 80px 24px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(41, 105, 60, 0.12) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(66, 122, 121, 0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(164, 203, 157, 0.12);
+  border: 1px solid rgba(164, 203, 157, 0.25);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-sage);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.hero h1 span { color: var(--brand-sage); }
+
+.hero-sub {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 32px;
+}
+
+.hero-year {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+}
+
+/* ---- PROGRESS BAR ---- */
+.progress-bar-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-100);
+  padding: 12px 24px;
+}
+
+.progress-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.progress-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  white-space: nowrap;
+}
+
+.progress-track {
+  flex: 1;
+  height: 6px;
+  background: var(--gray-100);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--brand-green), var(--brand-sage));
+  border-radius: 100px;
+  transition: width 0.5s ease;
+}
+
+.progress-count {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--brand-green);
+  white-space: nowrap;
+}
+
+/* ---- MAIN CONTAINER ---- */
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ---- WELCOME BLOCK ---- */
+.welcome-block {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-100);
+}
+
+.welcome-block h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brand-black);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.welcome-block p {
+  color: var(--gray-500);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.welcome-block p:last-child { margin-bottom: 0; }
+
+/* ---- ACCORDION ---- */
+.accordion-item {
+  margin-bottom: 12px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-100);
+}
+
+.section-header {
+  background: var(--brand-black);
+  color: var(--white);
+  padding: 18px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  user-select: none;
+  transition: background var(--transition);
+  position: relative;
+  scroll-margin-top: 60px;
+}
+
+.section-header:hover {
+  background: #111111;
+}
+
+.section-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.section-number {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand-green);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.section-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.section-chevron {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition);
+  opacity: 0.5;
+}
+
+.section-header[aria-expanded="true"] .section-chevron {
+  transform: rotate(180deg);
+}
+
+.section-check-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--brand-sage);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.section-header.visited .section-check-icon { opacity: 1; }
+
+/* Accordion body — use display toggle for reliability */
+.section-body {
+  background: var(--white);
+  display: none;
+  border-top: 1px solid var(--gray-100);
+}
+
+.section-body.open {
+  display: block;
+}
+
+.section-body-inner {
+  padding: 32px 28px;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--gray-500);
+}
+
+.section-body-inner h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--brand-black);
+  margin: 24px 0 10px;
+}
+
+.section-body-inner h3:first-child { margin-top: 0; }
+
+.section-body-inner p { margin-bottom: 12px; }
+
+.section-body-inner ul, .section-body-inner ol {
+  margin: 8px 0 16px 20px;
+}
+
+.section-body-inner li {
+  margin-bottom: 6px;
+  padding-left: 4px;
+}
+
+.section-body-inner strong { color: var(--gray-700); font-weight: 600; }
+
+/* Callout boxes */
+.callout {
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  margin: 16px 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.callout-warn {
+  background: var(--amber-light);
+  border-left: 3px solid var(--amber);
+  color: #92400E;
+}
+
+.callout-danger {
+  background: var(--red-light);
+  border-left: 3px solid var(--red);
+  color: #991B1B;
+}
+
+.callout-info {
+  background: var(--brand-glow);
+  border-left: 3px solid var(--brand-green);
+  color: var(--brand-deep-teal);
+}
+
+.callout-success {
+  background: var(--green-success-light);
+  border-left: 3px solid var(--green-success);
+  color: #166534;
+}
+
+/* Infractions table */
+.infraction-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.85rem;
+}
+
+.infraction-table th {
+  background: var(--brand-black);
+  color: var(--white);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.infraction-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.infraction-table tr:last-child td { border-bottom: none; }
+.infraction-table tr:nth-child(even) { background: var(--gray-50); }
+
+/* ---- TEAM SECTION ---- */
+.team-section {
+  margin-bottom: 32px;
+}
+
+.team-section-title {
+  background: var(--brand-black);
+  color: var(--white);
+  padding: 18px 24px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.team-grid-wrapper {
+  background: var(--white);
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 32px 28px;
+  border: 1px solid var(--gray-100);
+  border-top: none;
+  box-shadow: var(--shadow);
+}
+
+.team-dept-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--brand-green);
+  margin: 28px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.team-dept-label:first-child { margin-top: 0; }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 24px;
+}
+
+.team-card { text-align: center; }
+
+.team-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-position: center 20%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 3px solid var(--gray-100);
+  transition: var(--transition);
+}
+
+.team-card:hover .team-photo {
+  border-color: var(--brand-green);
+  transform: scale(1.05);
+}
+
+.team-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brand-black);
+  margin-bottom: 2px;
+}
+
+.team-role {
+  font-size: 0.72rem;
+  color: var(--gray-400);
+  line-height: 1.3;
+}
+
+/* ---- ACKNOWLEDGMENT FORM ---- */
+.ack-section {
+  margin-top: 48px;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-100);
+  position: relative;
+}
+
+.ack-header {
+  background: var(--brand-black);
+  color: var(--white);
+  padding: 24px 28px;
+}
+
+.ack-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ack-header p {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.ack-body { padding: 32px 28px; }
+
+/* Lock overlay */
+.ack-locked-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  text-align: center;
+  padding: 40px;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.ack-locked-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.lock-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--gray-300);
+  margin-bottom: 16px;
+}
+
+.ack-locked-overlay h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--brand-black);
+  margin-bottom: 8px;
+}
+
+.ack-locked-overlay p {
+  font-size: 0.88rem;
+  color: var(--gray-400);
+  max-width: 360px;
+}
+
+/* Form fields */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group { margin-bottom: 16px; }
+
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  background: var(--white);
+  transition: var(--transition);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--brand-green);
+  box-shadow: 0 0 0 3px var(--brand-glow);
+}
+
+.form-input[readonly] {
+  background: var(--gray-50);
+  color: var(--gray-400);
+}
+
+/* Section checkboxes */
+.section-checks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.section-check-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--gray-50);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.82rem;
+  color: var(--gray-500);
+}
+
+.section-check-item:hover { background: var(--brand-glow); }
+
+.section-check-item input[type="checkbox"] {
+  accent-color: var(--brand-green);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Signature pad */
+.sig-container { margin: 24px 0; }
+
+.sig-canvas {
+  width: 100%;
+  height: 150px;
+  border: 2px dashed var(--gray-200);
+  border-radius: var(--radius-sm);
+  cursor: crosshair;
+  background: var(--white);
+  touch-action: none;
+  display: block;
+}
+
+.sig-canvas.signing {
+  border-color: var(--brand-green);
+  border-style: solid;
+}
+
+.sig-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.btn-clear {
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid var(--gray-200);
+  background: var(--white);
+  color: var(--gray-500);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: var(--transition);
+}
+
+.btn-clear:hover { border-color: var(--gray-300); background: var(--gray-50); }
+
+/* Submit button */
+.btn-submit {
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--brand-green);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: var(--transition);
+  margin-top: 24px;
+  letter-spacing: 0.01em;
+}
+
+.btn-submit:hover {
+  background: var(--brand-green-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(41, 105, 60, 0.3);
+}
+
+.btn-submit:active { transform: translateY(0); }
+
+.btn-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Success state */
+.success-message {
+  display: none;
+  text-align: center;
+  padding: 48px 28px;
+}
+
+.success-message.show { display: block; }
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--green-success);
+  margin-bottom: 16px;
+}
+
+.success-message h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--brand-black);
+  margin-bottom: 8px;
+}
+
+.success-message p {
+  color: var(--gray-400);
+  font-size: 0.9rem;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  color: var(--gray-300);
+  font-size: 0.78rem;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 640px) {
+  .hero { padding: 60px 20px 40px; }
+  .hero h1 { font-size: 2rem; }
+  .container { padding: 24px 16px 60px; }
+  .section-header { padding: 16px 18px; }
+  .section-body-inner { padding: 24px 20px; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .team-grid-wrapper { padding: 24px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .section-checks-grid { grid-template-columns: 1fr; }
+  .welcome-block { padding: 28px 20px; }
+  .ack-body { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Welcome to Our Company</div>
+    <h1>Virtual Assistant<br><span>Handbook</span></h1>
+    <p class="hero-sub">Your complete guide to company policies, expectations, and standards.</p>
+    <p class="hero-year">KEYPLAYERSHQ &mdash; 2026</p>
+  </div>
+</section>
+
+<!-- ===== PROGRESS BAR ===== -->
+<div class="progress-bar-container">
+  <div class="progress-inner">
+    <span class="progress-label">Reading Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-count" id="progressCount">0 / 13</span>
+  </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="container">
+
+  <!-- Welcome -->
+  <div class="welcome-block">
+    <h2>Welcome to KeyPlayers</h2>
+    <p>Welcome to KeyPlayers &mdash; where people are our greatest asset. This handbook serves as your complete guide to company policies, expectations, and standards. It is designed to promote professionalism, accountability, and consistency across all Virtual Assistants (VAs).</p>
+    <p>All team members are expected to read, understand, and comply with the policies outlined in this handbook.</p>
+  </div>
+
+  <!-- ===== ACCORDION SECTIONS ===== -->
+
+  <!-- 1. Purpose & Scope -->
+  <div class="accordion-item" data-section="purpose">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">1</div>
+        <div class="section-title">Purpose and Scope</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <p>This handbook applies to all KeyPlayers Virtual Assistants, employees, and contractors.</p>
+        <h3>Our Goals</h3>
+        <ul>
+          <li>Maintain a professional and positive work culture</li>
+          <li>Ensure clear communication across teams</li>
+          <li>Implement fair and consistent practices</li>
+        </ul>
+        <h3>Core Principles</h3>
+        <p>All VAs must:</p>
+        <ul>
+          <li>Protect client and company data</li>
+          <li>Safeguard devices and login credentials</li>
+          <li>Follow secure and cloud-based workflows</li>
+          <li>Maintain professionalism, honesty, and integrity</li>
+          <li>Comply with both KeyPlayers and client policies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Company Background -->
+  <div class="accordion-item" data-section="background">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">2</div>
+        <div class="section-title">Company Background</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <p>KeyPlayers was founded by Mitch and Olivia &mdash; partners in life and business &mdash; alongside Jhoana and Nick. Mitch brought the technology, marketing, and growth infrastructure from a career spanning agency ownership, an Inc. 5000 VP role, and a CMO position. Olivia brought a decade of corporate experience in recruiting and cybersecurity. Jhoana built and led a talent network across the Philippines. Nick designed the AI training program from his background leading global training operations at one of the UK's largest telecoms.</p>
+        <p>Together, they built what no VA company had: AI-trained people, inside AI-powered systems, backed by a team that stays accountable.</p>
+        <p>KeyPlayers was built to solve a problem we kept seeing: smart business owners drowning in operational work while AI tools sat unused. We built the solution &mdash; AI-trained virtual assistants, real systems, and a team that stays accountable for the outcome.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TEAM SECTION ===== -->
+  <div class="team-section">
+    <div class="team-section-title">Meet the Team</div>
+    <div class="team-grid-wrapper">
+      <div class="team-dept-label">CEO &amp; Co-Founders</div>
+      <div class="team-grid">
+        <div class="team-card"><img src="images/mitch-conquer.png" alt="Mitch Conquer" class="team-photo"><div class="team-name">Mitch Conquer</div><div class="team-role">CEO &amp; Founder</div></div>
+        <div class="team-card"><img src="images/olivia-greenberg.png" alt="Olivia Greenberg" class="team-photo"><div class="team-name">Olivia Greenberg</div><div class="team-role">Co-Founder</div></div>
+        <div class="team-card"><img src="images/jhoana-lowe.png" alt="Jhoana Lowe" class="team-photo"><div class="team-name">Jhoana Lowe</div><div class="team-role">Co-Founder</div></div>
+        <div class="team-card"><img src="images/nick-lowe.png" alt="Nick Lowe" class="team-photo"><div class="team-name">Nick Lowe</div><div class="team-role">Co-Founder</div></div>
+      </div>
+
+      <div class="team-dept-label">Operations</div>
+      <div class="team-grid">
+        <div class="team-card"><img src="images/pow.png" alt="Pow" class="team-photo"><div class="team-name">Pow</div><div class="team-role">Client Success / Operations Lead</div></div>
+        <div class="team-card"><img src="images/carl.png" alt="Carl" class="team-photo"><div class="team-name">Carl</div><div class="team-role">Client Success Manager</div></div>
+        <div class="team-card"><img src="images/bobby.png" alt="Bobby" class="team-photo"><div class="team-name">Bobby</div><div class="team-role">Team Lead / Trainer / Admin</div></div>
+        <div class="team-card"><img src="images/patricia.png" alt="Patricia" class="team-photo"><div class="team-name">Patricia</div><div class="team-role">Client Success Coordinator / Team Lead</div></div>
+      </div>
+
+      <div class="team-dept-label">HR &amp; Recruitment</div>
+      <div class="team-grid">
+        <div class="team-card"><img src="images/bellai.png" alt="Bellai" class="team-photo"><div class="team-name">Bellai</div><div class="team-role">HR Manager</div></div>
+        <div class="team-card"><img src="images/joven.png" alt="Joven" class="team-photo"><div class="team-name">Joven</div><div class="team-role">Recruitment Manager</div></div>
+        <div class="team-card"><img src="images/nico.png" alt="Nico" class="team-photo"><div class="team-name">Nico</div><div class="team-role">Recruitment Specialist</div></div>
+        <div class="team-card"><img src="images/edward.png" alt="Edward" class="team-photo"><div class="team-name">Edward</div><div class="team-role">HR Administrator</div></div>
+      </div>
+
+      <div class="team-dept-label">Marketing &amp; Sales</div>
+      <div class="team-grid">
+        <div class="team-card"><img src="images/jervis.png" alt="Jervis" class="team-photo"><div class="team-name">Jervis</div><div class="team-role">Sales / Mitch's Assistant</div></div>
+        <div class="team-card"><img src="images/hunio.png" alt="Hunio" class="team-photo"><div class="team-name">Hunio</div><div class="team-role">Marketing Assistant / Social Media Manager</div></div>
+        <div class="team-card"><img src="images/isaac.png" alt="Isaac" class="team-photo"><div class="team-name">Isaac</div><div class="team-role">Sales / AI Specialist</div></div>
+        <div class="team-card"><img src="images/giordano.png" alt="Giordano" class="team-photo"><div class="team-name">Giordano</div><div class="team-role">Sales</div></div>
+      </div>
+
+      <div class="team-dept-label">Training &amp; Bookkeeper</div>
+      <div class="team-grid">
+        <div class="team-card"><img src="images/nellie.png" alt="Nellie" class="team-photo"><div class="team-name">Nellie</div><div class="team-role">Training Manager</div></div>
+        <div class="team-card"><img src="images/czarina.png" alt="Czarina" class="team-photo"><div class="team-name">Czarina</div><div class="team-role">Bookkeeper</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Pre-Day-1 Requirements -->
+  <div class="accordion-item" data-section="preday1">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">3</div>
+        <div class="section-title">Pre-Day-1 Requirements</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <h3>1. Bank Information Form</h3>
+        <ul>
+          <li>Fill out the provided bank form accurately</li>
+          <li>Ensure bank details are updated when changes occur</li>
+        </ul>
+        <h3>2. Scrin.io Setup (Time Tracking)</h3>
+        <ul>
+          <li>Accept your Scrin.io invite before Day 1</li>
+          <li>Scrin.io must remain active during all work hours</li>
+        </ul>
+        <div class="callout callout-danger">Pausing, blocking, or disabling Scrin.io is strictly prohibited.</div>
+        <h3>3. Required Security Tools</h3>
+        <p>Install and maintain: full disk encryption and anti-malware/anti-virus software.</p>
+        <h3>4. Device Encryption (Mandatory)</h3>
+        <p>Full-disk encryption is required at all times:</p>
+        <ul>
+          <li><strong>Windows</strong> &mdash; BitLocker or VeraCrypt</li>
+          <li><strong>Mac</strong> &mdash; FileVault</li>
+        </ul>
+        <div class="callout callout-warn">Encryption must remain ON during employment.</div>
+        <h3>5. Malware and Virus Protection</h3>
+        <p>Required: Malwarebytes and Windows Defender or macOS XProtect.</p>
+        <div class="callout callout-info">If alerts appear: stop working and notify HR immediately.</div>
+        <h3>6. Password Manager</h3>
+        <p>Store passwords ONLY in <strong>LastPass</strong> or <strong>1Password</strong>.</p>
+        <p>Not allowed: browser-saved passwords, notes apps, spreadsheets, or chat apps.</p>
+        <h3>7. Secure Workspace Setup</h3>
+        <p>Before starting work, ensure you have:</p>
+        <ul>
+          <li>A private workspace</li>
+          <li>A secure internet connection (no public WiFi)</li>
+          <li>No one else uses your device</li>
+          <li>Screen not visible to others</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Communication Standards -->
+  <div class="accordion-item" data-section="communication">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">4</div>
+        <div class="section-title">Communication Standards &amp; Third-Party Tools</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <h3>Communication Standards</h3>
+        <p><strong>WhatsApp</strong> &mdash; Use for quick communication. Check messages often and reply promptly.</p>
+        <p><strong>Slack</strong> &mdash; Our main communication tool. Check it regularly during your shift, respond promptly, and keep your status updated.</p>
+        <p><strong>Email Etiquette</strong> &mdash; Acknowledge emails within 5 minutes. If you can't reply fully yet, send a short acknowledgment and follow up soon. Always use a professional and polite tone.</p>
+        <h3>Third-Party Tools Policy</h3>
+        <div class="callout callout-danger">
+          <strong>Prohibited Tools:</strong> Mouse movers, activity simulators, auto-clickers, time-manipulation apps.<br><br>
+          <strong>Why:</strong> They misrepresent work activity, violate client trust, and create legal/compliance risks.<br><br>
+          <strong>Consequences:</strong> Investigation, disciplinary action, and possible termination.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Professional Conduct -->
+  <div class="accordion-item" data-section="conduct">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">5</div>
+        <div class="section-title">Professional Conduct &amp; Ethics</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <p>All employees are expected to demonstrate professionalism in every interaction.</p>
+        <ul>
+          <li>Avoid foul language, offensive jokes, or unprofessional comments</li>
+          <li>Treat colleagues, clients, and management with respect, honesty, and courtesy</li>
+          <li>Represent KeyPlayers with integrity and accountability at all times</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Confidentiality -->
+  <div class="accordion-item" data-section="confidentiality">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">6</div>
+        <div class="section-title">Confidentiality &amp; Data Security</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <p>Protecting client and company information is a fundamental responsibility. All data must be treated as confidential and handled with the highest level of care at all times.</p>
+        <h3>General Guidelines</h3>
+        <ul>
+          <li>Never share passwords, files, or confidential information without proper authorization</li>
+          <li>Always log out of systems and tools when they are not in use</li>
+          <li>Immediately report any unusual or suspicious activity to HR or your Team Leader</li>
+        </ul>
+        <div class="callout callout-success">
+          <strong>Do's:</strong> Use only company-approved tools and platforms. Store files exclusively in the client's designated cloud storage. Report any security concerns immediately.
+        </div>
+        <div class="callout callout-danger">
+          <strong>Don'ts:</strong> Do not use personal devices or storage for work files. Do not disclose client information to unauthorized persons. Do not capture or send screenshots containing sensitive data.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Employment & Probation -->
+  <div class="accordion-item" data-section="probation">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">7</div>
+        <div class="section-title">Employment and Probation</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <p>All newly hired Virtual Assistants are subject to a <strong>three-month probationary period</strong>.</p>
+        <h3>During Probation</h3>
+        <ul>
+          <li>Performance, attendance, and workplace behavior are closely monitored and evaluated on an ongoing basis</li>
+          <li>The "No Work, No Pay" policy is strictly implemented, including during statutory holidays</li>
+          <li>Employees who are on probationary status are not yet eligible for paid statutory holidays</li>
+        </ul>
+        <div class="callout callout-info"><strong>Important:</strong> All payments are processed under KeyPlayers. During probation, leaves are unpaid. Do not initiate or request paid leave during probation.</div>
+        <h3>Regularization Policy</h3>
+        <p>Regularization is determined on a per-client basis. A VA becomes regular after successfully completing the required probationary period with a specific client. When assigned to a new client, VAs will automatically return to probationary status for that new engagement.</p>
+        <ul>
+          <li>Regularization is client-specific, not contract-based</li>
+          <li>A VA will undergo a probationary period for each new client assignment</li>
+          <li>Being a regular VA with one client does not carry over to another</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Attendance & Time-Off -->
+  <div class="accordion-item" data-section="attendance">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">8</div>
+        <div class="section-title">Attendance &amp; Time-Off Policy</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <h3>Leave Credits (Annual Allocation)</h3>
+        <ul>
+          <li><strong>10</strong> Vacation Leave Days</li>
+          <li><strong>5</strong> Sick Leave Days</li>
+          <li><strong>5</strong> Emergency Leave Days</li>
+        </ul>
+        <div class="callout callout-warn">Emergency leave is strictly for outages or urgent unforeseen situations only. Must be supported with valid documentation and is subject to HR review and approval.</div>
+        <h3>Holiday Observance</h3>
+        <ul>
+          <li>We do not observe Philippine holidays</li>
+          <li>VAs are expected to work on North American statutory holidays by default, unless the client advises otherwise</li>
+          <li>The only exceptions are <strong>New Year's Day</strong> and <strong>Christmas Day</strong>, which are automatic days off</li>
+        </ul>
+        <h3>Statutory Holiday Policy</h3>
+        <p>If a client does not require a VA to work on a statutory holiday, the VA must still submit a leave request. For regular VAs, approved statutory holidays are treated as paid time off. For probationary VAs, statutory holidays are unpaid unless stated otherwise by the client.</p>
+        <h3>Planned Leave</h3>
+        <ul>
+          <li><strong>1&ndash;2 days:</strong> Request 2 weeks in advance</li>
+          <li><strong>3+ days:</strong> Request 1 month in advance</li>
+          <li>Notify HR and your Team Leader via email</li>
+          <li>Send a Slack or WhatsApp message for visibility</li>
+        </ul>
+        <div class="callout callout-info">All leave requests must be submitted through the official Leave Request Form. Requests will not be considered valid without a completed form.</div>
+        <h3>Unplanned Leave</h3>
+        <ul>
+          <li>Notify HR or your Team Leader at least 2 hours before your shift</li>
+          <li>A follow-up email is required for documentation</li>
+          <li>The Leave Request Form must still be completed after notification</li>
+        </ul>
+        <div class="callout callout-danger"><strong>No Call / No Show (NCNS):</strong> Strict zero-tolerance policy. May result in disciplinary action or termination.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Work Hours & Breaks -->
+  <div class="accordion-item" data-section="workhours">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">9</div>
+        <div class="section-title">Work Hours &amp; Break Policy</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <p>Breaks are assigned based on shift duration:</p>
+        <ul>
+          <li><strong>2&ndash;3 hour shift:</strong> No break</li>
+          <li><strong>4&ndash;6 hour shift:</strong> 15-minute break</li>
+          <li><strong>8 hour shift:</strong> Two (2) 15-minute breaks and one (1) 30-minute lunch break</li>
+        </ul>
+        <div class="callout callout-info">Breaks must be managed responsibly and should not affect productivity.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Performance Management -->
+  <div class="accordion-item" data-section="performance">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">10</div>
+        <div class="section-title">Attendance &amp; Performance Management</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <h3>Work Readiness</h3>
+        <ul>
+          <li>Log in and be ready to work at your scheduled start time every day</li>
+          <li>Inform HR or your Supervisor in advance if you'll be late or unable to report</li>
+          <li>Report any unplanned absences as soon as possible through Slack, WhatsApp, or email</li>
+          <li>Repeated tardiness or NCNS incidents may lead to disciplinary action</li>
+        </ul>
+        <h3>Infractions &amp; Points System</h3>
+        <table class="infraction-table">
+          <thead><tr><th>Infraction</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td>Tardiness</td><td>+0.5 point</td></tr>
+            <tr><td>Early Logout (without approval)</td><td>+0.5 point</td></tr>
+            <tr><td>Logging in and out within the Shift</td><td>+0.5 point</td></tr>
+            <tr><td>Absence</td><td>+1.0 point</td></tr>
+            <tr><td>Absence Without Notice</td><td>+1.0 point</td></tr>
+          </tbody>
+        </table>
+        <h3>HR Sanctions &amp; Disciplinary Action</h3>
+        <table class="infraction-table">
+          <thead><tr><th>Total Points</th><th>Action Taken</th></tr></thead>
+          <tbody>
+            <tr><td>2 Points</td><td>Verbal Warning</td></tr>
+            <tr><td>3 Points</td><td>Written Warning &amp; Letter of Commitment</td></tr>
+            <tr><td>4 Points</td><td>Final Written Warning</td></tr>
+            <tr><td>5 Points</td><td>HR Hearing &mdash; Possible termination</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-warn">Two (2) consecutive sick days require a medical certificate to avoid attendance points.</div>
+        <h3>Growth &amp; Development</h3>
+        <ul>
+          <li><strong>Embrace Feedback:</strong> Stay open to constructive feedback and apply it to improve your performance</li>
+          <li><strong>Continuous Learning:</strong> Take initiative to learn new tools and skills</li>
+          <li><strong>Be Proactive:</strong> Anticipate needs, take initiative, and manage your time effectively</li>
+        </ul>
+        <h3>Disciplinary Framework</h3>
+        <p>KeyPlayers follows a progressive discipline policy:</p>
+        <ul>
+          <li><strong>Coaching</strong> &mdash; Verbal discussion and support for improvement</li>
+          <li><strong>Written Warning</strong> &mdash; Formal notice documenting the issue</li>
+          <li><strong>Final Written Warning</strong> &mdash; Issued for repeated or serious violations</li>
+          <li><strong>Termination</strong> &mdash; Final step for continued non-compliance</li>
+        </ul>
+        <h3>Performance Improvement Plan (PIP)</h3>
+        <p>If performance issues are identified, the employee will be placed on a <strong>two-week PIP</strong>. Failure to show improvement may result in reassignment or termination.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. Resignation -->
+  <div class="accordion-item" data-section="resignation">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">11</div>
+        <div class="section-title">Resignation Policy</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <ul>
+          <li>Submit a formal resignation notice at least <strong>two (2) weeks</strong> before your final day</li>
+          <li>All handovers, access removals, and documentation must be completed before departure</li>
+          <li>Knowledge Transfer and Training Manuals must be submitted before final pay release</li>
+        </ul>
+        <div class="callout callout-warn">Failure to comply may delay or void the release of final payment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Training -->
+  <div class="accordion-item" data-section="training">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">12</div>
+        <div class="section-title">Training Policy</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <ul>
+          <li>All trainees are entitled to paid training, generally <strong>two (2) hours per day</strong> for up to <strong>two (2) weeks</strong></li>
+          <li>Training payment will be released after successful client placement</li>
+          <li>The training covers system familiarization, process updates, and performance monitoring</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. Time Tracking / Scrin.io -->
+  <div class="accordion-item" data-section="scrin">
+    <div class="section-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <div class="section-number">13</div>
+        <div class="section-title">Time Tracking &amp; Payment (Scrin.io)</div>
+      </div>
+      <div class="section-icons">
+        <svg class="section-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <svg class="section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <p>Scrin.io is the tool we use to track work hours. Please follow these guidelines:</p>
+        <h3>General Rules</h3>
+        <ul>
+          <li>Scrin.io must run throughout your shift</li>
+          <li>Only tracked hours are paid</li>
+          <li>Logging out during shift may result in deductions and infractions</li>
+        </ul>
+        <div class="callout callout-warn"><strong>Important System Reminder:</strong> Do not leave your screen idle for long periods. Ensure your device stays active during your shift. Be responsible for monitoring your tracking tool. Scrin.io may log out automatically if your screen goes idle.</div>
+        <h3>Screenshots &amp; Notes</h3>
+        <ul>
+          <li>Do not delete or alter screenshots</li>
+          <li>Keep notes clear and professional</li>
+        </ul>
+        <h3>If Issues Occur</h3>
+        <ul>
+          <li>Report issues immediately</li>
+          <li>Share screenshots if possible</li>
+          <li>Wait for guidance from your Team Leader or HR</li>
+        </ul>
+        <div class="callout callout-info">Following this policy helps protect both you and the company and ensures accurate pay.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ACKNOWLEDGMENT FORM ===== -->
+  <div class="ack-section" id="ackSection">
+    <div class="ack-locked-overlay" id="lockOverlay">
+      <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <path d="M7 11V7a5 5 0 0110 0v4"/>
+      </svg>
+      <h3>Form Locked</h3>
+      <p>Please open and read all <strong id="remainingCount">13</strong> sections above before signing. Your progress is tracked in the bar at the top.</p>
+    </div>
+
+    <div class="ack-header">
+      <h2>Acknowledgment</h2>
+      <p>I acknowledge that I have read, understood, and agree to comply with the KeyPlayers VA Handbook.</p>
+    </div>
+
+    <div class="ack-body" id="ackFormBody">
+      <form id="ackForm" onsubmit="return handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fullName">Full Name *</label>
+            <input class="form-input" type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address *</label>
+            <input class="form-input" type="email" id="email" name="email" required placeholder="your.email@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="dateSigned">Date *</label>
+            <input class="form-input" type="text" id="dateSigned" name="dateSigned" readonly>
+          </div>
+        </div>
+
+        <div style="background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: var(--radius-sm); padding: 16px 20px; margin: 16px 0;">
+          <label class="section-check-item" style="background:none; padding:0;">
+            <input type="checkbox" id="ackCheckbox" required>
+            <span style="line-height:1.5;">I confirm that I have carefully read and fully understood the entire KeyPlayers HQ Virtual Assistant Handbook, including all sections and policies contained within. I acknowledge that I am bound by the terms, guidelines, and expectations outlined in this handbook, and I accept full responsibility for complying with them during my engagement with KeyPlayers HQ.</span>
+          </label>
+        </div>
+
+        <div class="sig-container">
+          <label class="form-label">Signature *</label>
+          <canvas class="sig-canvas" id="sigCanvas"></canvas>
+          <div class="sig-actions">
+            <button type="button" class="btn-clear" onclick="clearSignature()">Clear Signature</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">Submit Acknowledgment</button>
+      </form>
+    </div>
+
+    <div class="success-message" id="successMsg">
+      <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+      <h3>Thank You!</h3>
+      <p>Your acknowledgment has been recorded successfully. Welcome to KeyPlayers!</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">&copy; 2026 KeyPlayers HQ. All rights reserved.</div>
+
+<script>
+/* ============================================
+   ACCORDION — display toggle (no max-height bugs)
+   ============================================ */
+
+const TOTAL_SECTIONS = 13;
+const visitedSections = new Set();
+let currentOpen = null;
+
+function toggleSection(header) {
+  const item = header.closest('.accordion-item');
+  const body = item.querySelector('.section-body');
+  const isOpen = body.classList.contains('open');
+
+  // Close currently open section
+  if (currentOpen && currentOpen !== body) {
+    currentOpen.classList.remove('open');
+    const prevHeader = currentOpen.closest('.accordion-item').querySelector('.section-header');
+    prevHeader.setAttribute('aria-expanded', 'false');
+  }
+
+  if (isOpen) {
+    // Close this section
+    body.classList.remove('open');
+    header.setAttribute('aria-expanded', 'false');
+    currentOpen = null;
+  } else {
+    // Open this section
+    body.classList.add('open');
+    header.setAttribute('aria-expanded', 'true');
+    currentOpen = body;
+
+    // Scroll into view smoothly
+    setTimeout(function() {
+      header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+
+    // Mark as visited
+    var sectionId = item.dataset.section;
+    if (sectionId && !visitedSections.has(sectionId)) {
+      visitedSections.add(sectionId);
+      header.classList.add('visited');
+      updateProgress();
+    }
+  }
+}
+
+// Keyboard support
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    var header = document.activeElement;
+    if (header && header.classList.contains('section-header')) {
+      e.preventDefault();
+      toggleSection(header);
+    }
+  }
+});
+
+function updateProgress() {
+  var count = visitedSections.size;
+  var pct = Math.round((count / TOTAL_SECTIONS) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressCount').textContent = count + ' / ' + TOTAL_SECTIONS;
+
+  var remaining = TOTAL_SECTIONS - count;
+  document.getElementById('remainingCount').textContent = remaining;
+
+  if (count >= TOTAL_SECTIONS) {
+    document.getElementById('lockOverlay').classList.add('hidden');
+  }
+}
+
+/* ============================================
+   SIGNATURE PAD
+   ============================================ */
+
+var canvas = document.getElementById('sigCanvas');
+var ctx = canvas.getContext('2d');
+var isDrawing = false;
+var hasSigned = false;
+var lastPoint = null;
+
+function resizeCanvas() {
+  var rect = canvas.getBoundingClientRect();
+  var dpr = window.devicePixelRatio || 1;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  ctx.scale(dpr, dpr);
+  ctx.strokeStyle = '#000000';
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+}
+
+function getPos(e) {
+  var rect = canvas.getBoundingClientRect();
+  var source = e.touches ? e.touches[0] : e;
+  return { x: source.clientX - rect.left, y: source.clientY - rect.top };
+}
+
+function startDraw(e) {
+  isDrawing = true;
+  lastPoint = getPos(e);
+  ctx.beginPath();
+  ctx.moveTo(lastPoint.x, lastPoint.y);
+  canvas.classList.add('signing');
+}
+
+function draw(e) {
+  if (!isDrawing) return;
+  var p = getPos(e);
+  ctx.lineTo(p.x, p.y);
+  ctx.stroke();
+  lastPoint = p;
+  hasSigned = true;
+}
+
+function endDraw() {
+  isDrawing = false;
+  canvas.classList.remove('signing');
+}
+
+// Mouse events
+canvas.addEventListener('mousedown', startDraw);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', endDraw);
+canvas.addEventListener('mouseleave', endDraw);
+
+// Touch events
+canvas.addEventListener('touchstart', function(e) { e.preventDefault(); startDraw(e); }, { passive: false });
+canvas.addEventListener('touchmove', function(e) { e.preventDefault(); draw(e); }, { passive: false });
+canvas.addEventListener('touchend', endDraw);
+
+function clearSignature() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  hasSigned = false;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+/* ============================================
+   DATE AUTO-FILL
+   ============================================ */
+
+document.getElementById('dateSigned').value = new Date().toLocaleDateString('en-CA', {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+
+/* ============================================
+   FORM SUBMISSION
+   ============================================ */
+
+// *** REPLACE THIS URL with your Google Apps Script Web App URL ***
+var SCRIPT_URL = 'https://script.google.com/a/macros/keyplayershq.com/s/AKfycbwEGH11bgqHIrT2nbZpLre4STq1V9KBKLrpm2QjhuYMCIV2fQPPPaYjPCD5odGrLQD8/exec';
+
+function handleSubmit(e) {
+  e.preventDefault();
+
+  if (!hasSigned) {
+    alert('Please provide your signature before submitting.');
+    return false;
+  }
+
+  if (visitedSections.size < TOTAL_SECTIONS) {
+    alert('Please read all sections before submitting.');
+    return false;
+  }
+
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  var form = document.getElementById('ackForm');
+
+  // Get signature as base64
+  var sigData = canvas.toDataURL('image/png');
+
+  var payload = {
+    fullName: document.getElementById('fullName').value,
+    email: document.getElementById('email').value,
+    dateSigned: document.getElementById('dateSigned').value,
+    signature: sigData,
+    acknowledgment: 'I confirm that I have carefully read and fully understood the entire KeyPlayers HQ Virtual Assistant Handbook, including all sections and policies contained within. I acknowledge that I am bound by the terms, guidelines, and expectations outlined in this handbook, and I accept full responsibility for complying with them during my engagement with KeyPlayers HQ.',
+    timestamp: new Date().toISOString()
+  };
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function() {
+    // Show success
+    document.getElementById('ackFormBody').style.display = 'none';
+    document.getElementById('successMsg').classList.add('show');
+  }).catch(function() {
+    alert('There was an error submitting. Please try again or contact HR.');
+    btn.disabled = false;
+    btn.textContent = 'Submit Acknowledgment';
+  });
+
+  return false;
+}
+</script>
+
+</body>
+</html>
